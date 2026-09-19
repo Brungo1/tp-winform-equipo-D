@@ -202,21 +202,26 @@ namespace TPWinForm_equipoD
             }
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+       
+            private void btnModificar_Click(object sender, EventArgs e)
         {
             if (dgvArticulos.CurrentRow != null)
             {
                 Articulo seleccionado =
                     (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
-                frmAltaArticulo ventana = new frmAltaArticulo(seleccionado);
+                frmAltaArticulo ventana =
+                    new frmAltaArticulo(seleccionado);
 
                 ventana.ShowDialog(this);
 
                 ArticuloNegocio negocio = new ArticuloNegocio();
-
                 dgvArticulos.DataSource = null;
                 dgvArticulos.DataSource = negocio.Listar();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un artículo.");
             }
         }
     }

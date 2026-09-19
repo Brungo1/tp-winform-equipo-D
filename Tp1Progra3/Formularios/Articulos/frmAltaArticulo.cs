@@ -25,9 +25,59 @@ namespace TPWinForm_equipoD.Formularios
         {
             InitializeComponent();
         }
+        private bool ValidarAlta()
+        {
+            if (txtCodigo.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe ingresar un código.");
+                txtCodigo.Focus();
+                return false;
+            }
 
+            if (txtNombre.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe ingresar un nombre.");
+                txtNombre.Focus();
+                return false;
+            }
+
+            if (txtDescripcion.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe ingresar una descripción.");
+                txtDescripcion.Focus();
+                return false;
+            }
+
+            if (txtPrecio.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe ingresar un precio.");
+                txtPrecio.Focus();
+                return false;
+            }
+
+            decimal precio;
+
+            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            {
+                MessageBox.Show("El precio debe ser numérico.");
+                txtPrecio.Focus();
+                return false;
+            }
+
+            if (precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser mayor a 0.");
+                txtPrecio.Focus();
+                return false;
+            }
+
+            return true;
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!ValidarAlta())
+                return;
+
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
@@ -35,9 +85,9 @@ namespace TPWinForm_equipoD.Formularios
                 if (articulo == null)
                     articulo = new Articulo();
 
-                articulo.codigo = txtCodigo.Text;
-                articulo.nombre = txtNombre.Text;
-                articulo.descripcion = txtDescripcion.Text;
+                articulo.codigo = txtCodigo.Text.Trim();
+                articulo.nombre = txtNombre.Text.Trim();
+                articulo.descripcion = txtDescripcion.Text.Trim();
                 articulo.marca = (Marca)cboIdMarca.SelectedItem;
                 articulo.categoria = (Categoria)cboIdCategoria.SelectedItem;
                 articulo.precio = decimal.Parse(txtPrecio.Text);
