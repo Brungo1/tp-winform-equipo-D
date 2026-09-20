@@ -14,14 +14,22 @@ namespace TPWinForm_equipoD.Formularios
 {
     public partial class frmAltaMarca : Form
     {
+        private Marca marcaActual = null;
         public frmAltaMarca()
         {
             InitializeComponent();
         }
 
+        public frmAltaMarca(Marca marcaSeleccionada)
+        {
+            InitializeComponent();
+            this.marcaActual = marcaSeleccionada;
+
+            txtDescripcion.Text = marcaActual.descripcion;
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Marca nueva = new Marca();
             MarcaNegocio negocio = new MarcaNegocio();
 
             try
@@ -32,10 +40,20 @@ namespace TPWinForm_equipoD.Formularios
                     return;
                 }
 
-                nueva.descripcion = txtDescripcion.Text;
-                negocio.Agregar(nueva);
+                if (marcaActual == null)
+                {
+                    Marca nueva = new Marca();
+                    nueva.descripcion = txtDescripcion.Text;
+                    negocio.Agregar(nueva);
+                    MessageBox.Show("Agregado exitosamente.");
+                }
 
-                MessageBox.Show("Marca agregada exitosamente.");
+                else
+                {
+                    marcaActual.descripcion = txtDescripcion.Text;
+                    negocio.Modificar(marcaActual);
+                    MessageBox.Show("Modificado exitosamente.");
+                }
                 this.Close();
             }
             catch (Exception ex)

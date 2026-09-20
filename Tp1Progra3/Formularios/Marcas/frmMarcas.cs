@@ -114,5 +114,27 @@ namespace TPWinForm_equipoD.Formularios
             frmAltaMarca.ShowDialog();
             CargarDatos();
         }
+
+        private void btnModificarMarca_Click(object sender, EventArgs e)
+        {
+            if (dgvMarcas.CurrentRow != null)
+            {
+                Marca seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+
+                frmAltaMarca modificar = new frmAltaMarca(seleccionada);
+                modificar.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una marca para modificar.");
+            }
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.OpenForms["MainMenu"].Close();
+        }
     }
 }

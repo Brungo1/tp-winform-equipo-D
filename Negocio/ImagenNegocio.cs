@@ -62,6 +62,46 @@ namespace Negocio
             }
         }
 
+        public void Eliminar(int idImagen)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("DELETE FROM IMAGENES WHERE Id = @Id");
+                datos.SetearParametros("@Id", idImagen);
+                datos.EjecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public void Modificar(Imagen imagen)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("UPDATE IMAGENES SET ImagenUrl = @ImagenUrl WHERE Id = @Id");
+                datos.SetearParametros("@ImagenUrl", imagen.urlimagen);
+                datos.SetearParametros("@Id", imagen.id);
+
+                datos.EjecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
 
 
 

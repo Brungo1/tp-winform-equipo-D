@@ -14,14 +14,22 @@ namespace TPWinForm_equipoD.Formularios
 {
     public partial class frmAltaCategoria : Form
     {
+        private Categoria categoriaActual = null;
         public frmAltaCategoria()
         {
             InitializeComponent();
         }
 
+        public frmAltaCategoria(Categoria categoriaSeleccionada)
+        {
+            InitializeComponent();
+            this.categoriaActual = categoriaSeleccionada;
+
+            txtDescripcion.Text = categoriaActual.descripcion;
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Categoria nueva = new Categoria();
             CategoriaNegocio negocio = new CategoriaNegocio();
 
             try
@@ -31,11 +39,20 @@ namespace TPWinForm_equipoD.Formularios
                     MessageBox.Show("Por favor, ingrese el nombre de la categoría.");
                     return;
                 }
+                if (categoriaActual == null)
+                {
+                    Categoria nueva = new Categoria();
+                    nueva.descripcion = txtDescripcion.Text;
+                    negocio.Agregar(nueva);
+                    MessageBox.Show("Agregado exitosamente.");
+                }
+                else
+                {
+                    categoriaActual.descripcion = txtDescripcion.Text;
+                    negocio.Modificar(categoriaActual);
+                    MessageBox.Show("Modificado exitosamente.");
+                }
 
-                nueva.descripcion = txtDescripcion.Text;
-                negocio.Agregar(nueva);
-
-                MessageBox.Show("Categoría agregada exitosamente.");
                 this.Close();
             }
             catch (Exception ex)

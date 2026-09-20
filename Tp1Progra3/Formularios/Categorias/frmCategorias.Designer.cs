@@ -52,7 +52,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnLimpiarFiltroCategoria.Location = new System.Drawing.Point(182, 90);
             this.btnLimpiarFiltroCategoria.Name = "btnLimpiarFiltroCategoria";
             this.btnLimpiarFiltroCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiarFiltroCategoria.TabIndex = 28;
+            this.btnLimpiarFiltroCategoria.TabIndex = 2;
             this.btnLimpiarFiltroCategoria.Text = "Limpiar filtro";
             this.btnLimpiarFiltroCategoria.UseVisualStyleBackColor = true;
             this.btnLimpiarFiltroCategoria.Click += new System.EventHandler(this.btnLimpiarFiltroCategoria_Click);
@@ -63,7 +63,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnBuscarCategoria.Location = new System.Drawing.Point(12, 90);
             this.btnBuscarCategoria.Name = "btnBuscarCategoria";
             this.btnBuscarCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscarCategoria.TabIndex = 27;
+            this.btnBuscarCategoria.TabIndex = 1;
             this.btnBuscarCategoria.Text = "Buscar 🔍";
             this.btnBuscarCategoria.UseVisualStyleBackColor = true;
             this.btnBuscarCategoria.Click += new System.EventHandler(this.btnBuscarCategoria_Click);
@@ -73,7 +73,7 @@ namespace TPWinForm_equipoD.Formularios
             this.txtBuscarCategoria.Location = new System.Drawing.Point(12, 66);
             this.txtBuscarCategoria.Name = "txtBuscarCategoria";
             this.txtBuscarCategoria.Size = new System.Drawing.Size(244, 20);
-            this.txtBuscarCategoria.TabIndex = 26;
+            this.txtBuscarCategoria.TabIndex = 0;
             // 
             // lblBuscarPorNombre
             // 
@@ -92,7 +92,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnEliminarCategoria.Location = new System.Drawing.Point(182, 400);
             this.btnEliminarCategoria.Name = "btnEliminarCategoria";
             this.btnEliminarCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarCategoria.TabIndex = 23;
+            this.btnEliminarCategoria.TabIndex = 5;
             this.btnEliminarCategoria.Text = "Eliminar ✖️";
             this.btnEliminarCategoria.UseVisualStyleBackColor = true;
             this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
@@ -103,9 +103,10 @@ namespace TPWinForm_equipoD.Formularios
             this.btnModificarCategoria.Location = new System.Drawing.Point(92, 400);
             this.btnModificarCategoria.Name = "btnModificarCategoria";
             this.btnModificarCategoria.Size = new System.Drawing.Size(84, 23);
-            this.btnModificarCategoria.TabIndex = 22;
+            this.btnModificarCategoria.TabIndex = 4;
             this.btnModificarCategoria.Text = "Modificar ✏️";
             this.btnModificarCategoria.UseVisualStyleBackColor = true;
+            this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
             // btnAgregarCategoria
             // 
@@ -113,7 +114,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnAgregarCategoria.Location = new System.Drawing.Point(12, 400);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(74, 23);
-            this.btnAgregarCategoria.TabIndex = 21;
+            this.btnAgregarCategoria.TabIndex = 3;
             this.btnAgregarCategoria.Text = "Agregar ➕";
             this.btnAgregarCategoria.UseVisualStyleBackColor = true;
             this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
@@ -142,6 +143,7 @@ namespace TPWinForm_equipoD.Formularios
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // tlsAdministrar
             // 

@@ -42,6 +42,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnBuscarMarca = new System.Windows.Forms.Button();
             this.txtBuscarMarca = new System.Windows.Forms.TextBox();
             this.lblBuscarPorNombre = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.mstMenuMarcas.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +85,7 @@ namespace TPWinForm_equipoD.Formularios
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // tlsAdministrar
             // 
@@ -114,7 +116,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnAgregarMarca.Location = new System.Drawing.Point(12, 404);
             this.btnAgregarMarca.Name = "btnAgregarMarca";
             this.btnAgregarMarca.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregarMarca.TabIndex = 10;
+            this.btnAgregarMarca.TabIndex = 3;
             this.btnAgregarMarca.Text = "Agregar ➕";
             this.btnAgregarMarca.UseVisualStyleBackColor = true;
             this.btnAgregarMarca.Click += new System.EventHandler(this.btnAgregarMarca_Click);
@@ -125,9 +127,10 @@ namespace TPWinForm_equipoD.Formularios
             this.btnModificarMarca.Location = new System.Drawing.Point(93, 404);
             this.btnModificarMarca.Name = "btnModificarMarca";
             this.btnModificarMarca.Size = new System.Drawing.Size(86, 23);
-            this.btnModificarMarca.TabIndex = 11;
+            this.btnModificarMarca.TabIndex = 4;
             this.btnModificarMarca.Text = "Modificar ✏️";
             this.btnModificarMarca.UseVisualStyleBackColor = true;
+            this.btnModificarMarca.Click += new System.EventHandler(this.btnModificarMarca_Click);
             // 
             // btnEliminarMarca
             // 
@@ -135,7 +138,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnEliminarMarca.Location = new System.Drawing.Point(185, 404);
             this.btnEliminarMarca.Name = "btnEliminarMarca";
             this.btnEliminarMarca.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarMarca.TabIndex = 12;
+            this.btnEliminarMarca.TabIndex = 5;
             this.btnEliminarMarca.Text = "Eliminar ✖️";
             this.btnEliminarMarca.UseVisualStyleBackColor = true;
             this.btnEliminarMarca.Click += new System.EventHandler(this.btnEliminarMarca_Click);
@@ -146,7 +149,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnLimpiarFiltroMarca.Location = new System.Drawing.Point(185, 90);
             this.btnLimpiarFiltroMarca.Name = "btnLimpiarFiltroMarca";
             this.btnLimpiarFiltroMarca.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiarFiltroMarca.TabIndex = 18;
+            this.btnLimpiarFiltroMarca.TabIndex = 2;
             this.btnLimpiarFiltroMarca.Text = "Limpiar filtro";
             this.btnLimpiarFiltroMarca.UseVisualStyleBackColor = true;
             this.btnLimpiarFiltroMarca.Click += new System.EventHandler(this.btnLimpiarFiltroMarca_Click);
@@ -157,7 +160,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnBuscarMarca.Location = new System.Drawing.Point(12, 90);
             this.btnBuscarMarca.Name = "btnBuscarMarca";
             this.btnBuscarMarca.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscarMarca.TabIndex = 17;
+            this.btnBuscarMarca.TabIndex = 1;
             this.btnBuscarMarca.Text = "Buscar 🔍";
             this.btnBuscarMarca.UseVisualStyleBackColor = true;
             this.btnBuscarMarca.Click += new System.EventHandler(this.btnBuscarMarca_Click);
@@ -167,7 +170,7 @@ namespace TPWinForm_equipoD.Formularios
             this.txtBuscarMarca.Location = new System.Drawing.Point(12, 64);
             this.txtBuscarMarca.Name = "txtBuscarMarca";
             this.txtBuscarMarca.Size = new System.Drawing.Size(248, 20);
-            this.txtBuscarMarca.TabIndex = 16;
+            this.txtBuscarMarca.TabIndex = 0;
             // 
             // lblBuscarPorNombre
             // 
@@ -223,5 +226,6 @@ namespace TPWinForm_equipoD.Formularios
         private System.Windows.Forms.Button btnBuscarMarca;
         private System.Windows.Forms.TextBox txtBuscarMarca;
         private System.Windows.Forms.Label lblBuscarPorNombre;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

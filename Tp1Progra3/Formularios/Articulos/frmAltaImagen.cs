@@ -14,27 +14,52 @@ namespace TPWinForm_equipoD
 {
     public partial class frmAltaImagen : Form
     {
-        private Articulo articuloLocal;
+        private Articulo articuloLocal = null;
+        private Imagen imagenActual = null;
         public frmAltaImagen(Articulo articuloSeleccionado)
         {
             InitializeComponent();
             this.articuloLocal = articuloSeleccionado;
         }
 
+        public frmAltaImagen(Imagen imagenSeleccionada)
+        {
+            InitializeComponent();
+            this.imagenActual = imagenSeleccionada;
+
+            txtUrlImagen.Text = imagenActual.urlimagen;
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ImagenNegocio negocio = new ImagenNegocio();
-            Imagen nuevaImagen = new Imagen();
 
             try
             {
-                nuevaImagen.idarticulo = articuloLocal.id; 
-                nuevaImagen.urlimagen = txtUrlImagen.Text; 
 
-                negocio.Agregar(nuevaImagen);
+                if (string.IsNullOrWhiteSpace(txtUrlImagen.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese la URL de la imagen.");
+                    return;
+                }
 
-                MessageBox.Show("Imagen agregada exitosamente.");
-                this.Close(); 
+                if (imagenActual == null)
+                {
+                    Imagen nueva = new Imagen();
+                    nueva.idarticulo = articuloLocal.id;
+                    nueva.urlimagen = txtUrlImagen.Text;
+                    negocio.Agregar(nueva);
+                    MessageBox.Show("Imagen agregada.");
+                }
+
+                else
+                {
+                    imagenActual.urlimagen = txtUrlImagen.Text;
+                    negocio.Modificar(imagenActual);
+                    MessageBox.Show("Imagen modificada.");
+                }
+
+                this.Close();
             }
             catch (Exception ex)
             {

@@ -71,5 +71,27 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public void Modificar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("UPDATE MARCAS SET Descripcion = @Descripcion WHERE Id = @Id");
+
+                datos.SetearParametros("@Descripcion", marca.descripcion);
+                datos.SetearParametros("@Id", marca.id);
+
+                datos.EjecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }

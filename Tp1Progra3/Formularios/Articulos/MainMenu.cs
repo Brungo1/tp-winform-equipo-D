@@ -253,5 +253,70 @@ namespace TPWinForm_equipoD
                 MessageBox.Show("Seleccione un artículo.");
             }
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnEliminarImagen_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                DialogResult confirmacion = MessageBox.Show(
+                    "¿Está seguro que desea eliminar la imagen?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    Imagen imagenSeleccionada = listaImagenesActuales[indiceImagenActual];
+                    ImagenNegocio negocio = new ImagenNegocio();
+
+                    negocio.Eliminar(imagenSeleccionada.id);
+
+                    RecargarImagenesArticulo();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna imagen para borrar.");
+            }
+        }
+
+        private void RecargarImagenesArticulo()
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+
+                listaImagenesActuales = imagenNegocio.ListarPorArticulo(seleccionado.id);
+                indiceImagenActual = 0; 
+
+                MostrarImagenActual();
+            }
+        }
+
+        private void btnModificarImagen_Click(object sender, EventArgs e)
+        {
+            if (listaImagenesActuales != null && listaImagenesActuales.Count > 0)
+            {
+                Imagen imagenSeleccionada = listaImagenesActuales[indiceImagenActual];
+
+                frmAltaImagen modificarImagen = new frmAltaImagen(imagenSeleccionada);
+                modificarImagen.ShowDialog();
+
+                RecargarImagenesArticulo();
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna imagen seleccionada para modificar.");
+            }
+        }
     }
 }

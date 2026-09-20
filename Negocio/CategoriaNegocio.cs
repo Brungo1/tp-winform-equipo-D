@@ -71,5 +71,27 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public void Modificar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("UPDATE CATEGORIAS SET Descripcion = @Descripcion WHERE Id = @Id");
+
+                datos.SetearParametros("@Descripcion", categoria.descripcion);
+                datos.SetearParametros("@Id", categoria.id);
+
+                datos.EjecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }

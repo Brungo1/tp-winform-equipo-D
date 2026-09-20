@@ -116,5 +116,28 @@ namespace TPWinForm_equipoD.Formularios
             frmAltaCategoria.ShowDialog();
             CargarDatos();
         }
+
+        private void btnModificarCategoria_Click(object sender, EventArgs e)
+        {
+            if (dgvCategoria.CurrentRow != null)
+            {
+                Categoria seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+
+                frmAltaCategoria modificar = new frmAltaCategoria(seleccionada);
+                modificar.ShowDialog();
+                CargarDatos();
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una categoría para modificar.");
+            }
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.OpenForms["MainMenu"].Close();
+        }
     }
 }
