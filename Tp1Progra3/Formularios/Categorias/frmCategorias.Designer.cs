@@ -55,6 +55,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnLimpiarFiltroCategoria.TabIndex = 28;
             this.btnLimpiarFiltroCategoria.Text = "Limpiar filtro";
             this.btnLimpiarFiltroCategoria.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroCategoria.Click += new System.EventHandler(this.btnLimpiarFiltroCategoria_Click);
             // 
             // btnBuscarCategoria
             // 
@@ -65,6 +66,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnBuscarCategoria.TabIndex = 27;
             this.btnBuscarCategoria.Text = "Buscar 🔍";
             this.btnBuscarCategoria.UseVisualStyleBackColor = true;
+            this.btnBuscarCategoria.Click += new System.EventHandler(this.btnBuscarCategoria_Click);
             // 
             // txtBuscarCategoria
             // 

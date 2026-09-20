@@ -42,6 +42,11 @@ namespace TPWinForm_equipoD
         private void MainMenu_Load(object sender, EventArgs e)
         {
             CargarDatos();
+            cmbBuscarArticulo.Items.Add("Nombre");
+            cmbBuscarArticulo.Items.Add("Código");
+            cmbBuscarArticulo.Items.Add("Marca");
+            cmbBuscarArticulo.Items.Add("Categoría");
+            cmbBuscarArticulo.SelectedIndex = 0;
         }
 
         private void btnAnterior_Click_1(object sender, EventArgs e)
@@ -167,6 +172,30 @@ namespace TPWinForm_equipoD
             {
                 MessageBox.Show("Por favor, seleccione un artículo de la lista primero.");
             }
+        }
+
+        private void btnBuscarArticulo_Click(object sender, EventArgs e)
+        {
+            string textoBuscar = txtBuscarArticulo.Text.ToLower();
+            string criterio = cmbBuscarArticulo.SelectedItem.ToString();
+            List<Articulo> resultado;
+
+            if (criterio == "Nombre")
+                resultado = listaArticulos.Where(a => a.nombre.ToLower().Contains(textoBuscar)).ToList();
+            else if (criterio == "Código")
+                resultado = listaArticulos.Where(a => a.codigo.ToLower().Contains(textoBuscar)).ToList();
+            else if (criterio == "Marca")
+                resultado = listaArticulos.Where(a => a.marca.descripcion.ToLower().Contains(textoBuscar)).ToList();
+            else
+                resultado = listaArticulos.Where(a => a.categoria.descripcion.ToLower().Contains(textoBuscar)).ToList();
+
+            dgvArticulos.DataSource = resultado;
+        }
+
+        private void btnLimpiarFiltroArticulo_Click(object sender, EventArgs e)
+        {
+            txtBuscarArticulo.Text = "";
+            dgvArticulos.DataSource = listaArticulos;
         }
 
         private void tlsMarcas_Click(object sender, EventArgs e)

@@ -147,6 +147,7 @@ namespace TPWinForm_equipoD
             this.btnBuscarArticulo.TabIndex = 6;
             this.btnBuscarArticulo.Text = "Buscar 🔍";
             this.btnBuscarArticulo.UseVisualStyleBackColor = true;
+            this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
             // 
             // btnLimpiarFiltroArticulo
             // 
@@ -157,6 +158,7 @@ namespace TPWinForm_equipoD
             this.btnLimpiarFiltroArticulo.TabIndex = 7;
             this.btnLimpiarFiltroArticulo.Text = "Limpiar filtro";
             this.btnLimpiarFiltroArticulo.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroArticulo.Click += new System.EventHandler(this.btnLimpiarFiltroArticulo_Click);
             // 
             // btnAgregar
             // 

@@ -55,6 +55,19 @@ namespace TPWinForm_equipoD.Formularios
             }
         }
 
+        private void btnBuscarCategoria_Click(object sender, EventArgs e)
+        {
+            string textoBuscar = txtBuscarCategoria.Text.ToLower();
+            List<Categoria> resultado = listaCategorias.Where(c => c.descripcion.ToLower().Contains(textoBuscar)).ToList();
+            dgvCategoria.DataSource = resultado;
+        }
+
+        private void btnLimpiarFiltroCategoria_Click(object sender, EventArgs e)
+        {
+            txtBuscarCategoria.Text = "";
+            dgvCategoria.DataSource = listaCategorias;
+        }
+
         private void tlsArticulos_Click(object sender, EventArgs e)
         {
             Application.OpenForms["MainMenu"].Show();

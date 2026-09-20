@@ -74,6 +74,19 @@ namespace TPWinForm_equipoD.Formularios
             }
         }
 
+        private void btnBuscarMarca_Click(object sender, EventArgs e)
+        {
+            string textoBuscar = txtBuscarMarca.Text.ToLower();
+            List<Marca> resultado = listaMarcas.Where(m => m.descripcion.ToLower().Contains(textoBuscar)).ToList();
+            dgvMarcas.DataSource = resultado;
+        }
+
+        private void btnLimpiarFiltroMarca_Click(object sender, EventArgs e)
+        {
+            txtBuscarMarca.Text = "";
+            dgvMarcas.DataSource = listaMarcas;
+        }
+
         private void tlsCategorias_Click(object sender, EventArgs e)
         {
             frmCategorias frmCategorias = new frmCategorias();

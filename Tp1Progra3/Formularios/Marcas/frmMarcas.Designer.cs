@@ -149,6 +149,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnLimpiarFiltroMarca.TabIndex = 18;
             this.btnLimpiarFiltroMarca.Text = "Limpiar filtro";
             this.btnLimpiarFiltroMarca.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroMarca.Click += new System.EventHandler(this.btnLimpiarFiltroMarca_Click);
             // 
             // btnBuscarMarca
             // 
@@ -159,6 +160,7 @@ namespace TPWinForm_equipoD.Formularios
             this.btnBuscarMarca.TabIndex = 17;
             this.btnBuscarMarca.Text = "Buscar 🔍";
             this.btnBuscarMarca.UseVisualStyleBackColor = true;
+            this.btnBuscarMarca.Click += new System.EventHandler(this.btnBuscarMarca_Click);
             // 
             // txtBuscarMarca
             // 
